@@ -10,6 +10,7 @@ use crate::WINDOWS_11;
 
 use komorebi_core::BorderStyle;
 use komorebi_core::Rect;
+use windows::Win32::UI::WindowsAndMessaging::IDC_ARROW;
 
 use std::sync::atomic::Ordering;
 use std::sync::mpsc;
@@ -84,7 +85,7 @@ impl Border {
             style: CS_HREDRAW | CS_VREDRAW,
             lpfnWndProc: Some(Self::callback),
             hbrBackground: WindowsApi::create_solid_brush(0),
-            hCursor: WindowsApi::load_default_arrow_cursor()?,
+            hCursor: WindowsApi::load_default_cursor(IDC_ARROW)?,
             ..Default::default()
         };
 

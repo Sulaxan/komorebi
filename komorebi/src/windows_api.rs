@@ -103,7 +103,6 @@ use windows::Win32::UI::WindowsAndMessaging::GWL_STYLE;
 use windows::Win32::UI::WindowsAndMessaging::GW_HWNDNEXT;
 use windows::Win32::UI::WindowsAndMessaging::HCURSOR;
 use windows::Win32::UI::WindowsAndMessaging::HWND_TOP;
-use windows::Win32::UI::WindowsAndMessaging::IDC_ARROW;
 use windows::Win32::UI::WindowsAndMessaging::LWA_ALPHA;
 use windows::Win32::UI::WindowsAndMessaging::LWA_COLORKEY;
 use windows::Win32::UI::WindowsAndMessaging::SET_WINDOW_POS_FLAGS;
@@ -1081,7 +1080,7 @@ impl WindowsApi {
         unsafe { WTSRegisterSessionNotification(HWND(hwnd), 1) }.process()
     }
 
-    pub fn load_default_arrow_cursor() -> Result<HCURSOR> {
-        Ok(unsafe { LoadCursorW(HINSTANCE(0), IDC_ARROW)? })
+    pub fn load_default_cursor(cursor_name: PCWSTR) -> Result<HCURSOR> {
+        Ok(unsafe { LoadCursorW(HINSTANCE(0), cursor_name)? })
     }
 }
